@@ -5,11 +5,16 @@ import { useRouter } from "next/router";
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const onClick = () => {
-    router.push("/test"); //클라이언트 사이드 렌더링 방식
+    router.push("/test");
+    router.prefetch("/test");
+    //-> 클라이언트 사이드 렌더링 방식
+    //<a href ='/'> </a>는 서버 사이드 렌더링 방식!
   };
   return (
     <div>
-      <Link href={"/"}>Home</Link>
+      <Link href={"/"} prefetch={false}>
+        Home
+      </Link>
       <div></div>
       <Link href={"/search"}>search</Link>
       <div></div>
